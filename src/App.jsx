@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import Home from './pages/Home/Home';
+
+import About from './pages/AboutUs/About';
+import Doctors from './features/Doctors/Doctors';
+import Contact from './pages/ContactUs/Contact';
+import Login from './features/Login/Login';
+import Footer from './components/Footer/Footer';
 
 function App() {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  const handleLoginClick = () => {
+    setIsLoginModalOpen(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar onLoginClick={handleLoginClick} />
+        <Login isLoginOpen={isLoginModalOpen} setIsLoginOpen={setIsLoginModalOpen} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/specialty" element={<Navigate to="/" state={{ scrollTo: 'specialty-section' }} replace />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/doctor" element={<Navigate to="/" state={{ scrollTo: 'doctors-section' }} replace />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer/>
+      </div>
+    </Router>
   );
 }
 

@@ -1,0 +1,141 @@
+/* WhoAre.css */
+
+.who-are-section {
+    padding: 60px 5%;
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .who-are-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .who-are-header h2 {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .who {
+    color: #111;
+  }
+  
+  .we-are {
+    color: #FFC700;
+  }
+  
+  .history-heading {
+    font-size: 28px;
+    color: #111;
+    text-align: right;
+    line-height: 1.4;
+  }
+  
+  .who-are-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 90px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .image-box {
+    position: relative;
+    flex: 1 1 45%;
+    min-width: 300px;
+    left: -150px;
+  }
+  
+  .image-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .text-box {
+    flex: 1 1 45%;
+    background-color: #f7f9fc;
+    padding: 30px;
+    border-radius: 12px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .text-box h4 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #222;
+    text-align: left;
+  }
+  
+  .text-box p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    text-align: left;
+  }
+  
+  @media (max-width: 1424px) {
+    .image-box {
+      position: relative;
+      flex: 1 1 45%;
+      min-width: 300px;
+      left: 0px;
+    }
+  }
+  
+
+  @media (max-width: 992px) {
+    .who-are-content {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+  
+    .image-box {
+      left: 0;
+    }
+  
+    .text-box {
+      text-align: center;
+    }
+  
+    .text-box h4, .text-box p {
+      text-align: center;
+    }
+  
+    .who-are-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .history-heading {
+      text-align: left;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .who-are-header h2 {
+      font-size: 28px;
+    }
+  
+    .history-heading {
+      font-size: 22px;
+    }
+  
+    .text-box {
+      padding: 20px;
+    }
+  }
+  

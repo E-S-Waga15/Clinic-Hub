@@ -1,0 +1,315 @@
+.mobile-carousel-wrapper {
+    background-color: #006A71;
+    padding: 40px ;
+    color: white;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mobile-carousel-slide {
+    max-width: 100%;
+    margin: auto;
+    padding: 20px 40px;
+  }
+  
+  .mobile-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 2px 0px 1px;
+    margin-left: -40px;
+  }
+  
+  .mobile-img {
+    max-width: 285px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .text-content {
+    text-align: left;
+    padding: 40px 40px 80px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .quote-mark {
+    font-size: 60px;
+    color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 0;
+    left: -20px;
+  }
+  
+  .testimonial {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 20px 0 30px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .download-btn {
+    background-color: white;
+    color: #006A71;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  
+  .download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Carousel Controls Styling */
+  .swipeable-carousel .carousel-control-prev,
+  .swipeable-carousel .carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+  }
+  
+  .swipeable-carousel .carousel-control-prev {
+    left: 20px;
+  }
+  
+  .swipeable-carousel .carousel-control-next {
+    right: 20px;
+  }
+  
+  .swipeable-carousel .carousel-control-prev:hover,
+  .swipeable-carousel .carousel-control-next:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+  }
+  
+  .swipeable-carousel .carousel-control-prev-icon,
+  .swipeable-carousel .carousel-control-next-icon {
+    width: 25px;
+    height: 25px;
+  }
+  
+  /* Carousel Indicators Styling */
+  .carousel-indicators {
+    bottom: 150px;
+    position: absolute;
+    right: 120px;
+    justify-content: flex-end;
+  }
+  
+  .carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 6px;
+  }
+  
+  .carousel-indicators .active {
+    background-color: white;
+  }
+  
+  /* Touch interaction improvements */
+  .swipeable-carousel {
+    touch-action: pan-y pinch-zoom;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .mobile-img {
+      max-width: 285px;
+    }
+    
+    .text-content {
+      padding: 30px 30px 80px 0;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .mobile-carousel-slide {
+      padding: 20px;
+    }
+  
+    .mobile-carousel-slide .row {
+      flex-direction: column;
+    }
+  
+    .mobile-image-container {
+      margin-left: 0;
+      margin-bottom: 20px;
+      order: -1; /* Ensures image is always first */
+    }
+  
+    .mobile-img {
+      max-width: 160px;
+    }
+  
+    .text-content {
+      text-align: center;
+      padding: 20px 20px 60px 20px;
+      align-items: center;
+    }
+  
+    .testimonial {
+      font-size: 1.1rem;
+    }
+  
+    .quote-mark {
+      display: none;
+    }
+  
+    .carousel-indicators {
+      bottom: 20px;
+      justify-content: center;
+      padding-left: 0;
+      left: 0;
+      right: 0;
+    }
+  
+    .swipeable-carousel .carousel-control-prev,
+    .swipeable-carousel .carousel-control-next {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .swipeable-carousel .carousel-control-prev {
+      left: 10px;
+    }
+  
+    .swipeable-carousel .carousel-control-next {
+      right: 10px;
+    }
+  
+    /* Adjust animations for mobile */
+    .fade-in-right {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .mobile-img {
+      max-width: 200px;
+    }
+
+     .mobile-img {
+    max-width: 200px;
+  }
+  }
+ 
+  
+  @media (max-width: 576px) {
+    .mobile-carousel-wrapper {
+      padding: 30px 0;
+    }
+  
+    .mobile-carousel-slide {
+      padding: 10px;
+    }
+  
+    .mobile-img {
+      max-width: 200px;
+    }
+  
+    .text-content {
+      padding: 20px 15px 50px 15px;
+    }
+  
+    .testimonial {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  
+    .carousel-indicators {
+      bottom: 10px;
+    }
+  
+    .swipeable-carousel .carousel-control-prev,
+    .swipeable-carousel .carousel-control-next {
+      width: 35px;
+      height: 35px;
+    }
+  
+    .swipeable-carousel .carousel-control-prev-icon,
+    .swipeable-carousel .carousel-control-next-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  /* Animation Keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  /* Section Animation */
+  .section-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+  
+  .section-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Floating animation for mobile images */
+  .floating {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Text content animation */
+  .fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+  }
+  

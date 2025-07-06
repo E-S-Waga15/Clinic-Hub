@@ -1,0 +1,450 @@
+.howto-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  margin: 40px 0;
+  position: relative;
+}
+
+.howto-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  position: relative;
+  min-width: 180px;
+  max-width: 220px;
+  text-align: center;
+}
+
+.howto-img-wrapper {
+  width: 140px;
+  height: 140px;
+  background: #219a9e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
+  margin-top: 8px;
+}
+
+.howto-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.howto-step-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #219a9e;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.howto-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.howto-desc {
+  font-size: 0.98rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Connecting line between steps */
+.howto-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 70px;
+  right: -16px;
+  width: 32px;
+  height: 3px;
+  background: #219a9e;
+  z-index: 0;
+}
+
+@media (max-width: 900px) {
+  .howto-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .howto-step:not(:last-child)::after {
+    display: none;
+  }
+  .howto-step {
+    max-width: 100%;
+  }
+}
+
+.howto-steps-vertical {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  margin: 60px 0 80px 0;
+  gap: 0;
+  padding: 0 60px;
+}
+
+.howto-vertical-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 200px;
+  max-width: 260px;
+  position: relative;
+  z-index: 2;
+}
+
+.howto-vertical-step.top {
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+.howto-vertical-step.bottom {
+  justify-content: flex-end;
+  margin-top: 60px;
+}
+
+.howto-img-wrapper-vertical {
+  width: 180px;
+  height: 180px;
+  background: #219a9e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+  margin-bottom: 22px;
+  margin-top: 8px;
+  position: relative;
+  transition: box-shadow 0.3s;
+}
+.howto-img-wrapper-vertical:hover {
+  box-shadow: 0 8px 32px rgba(33,154,158,0.18);
+}
+
+.howto-img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+
+.howto-step-number-vertical {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #219a9e;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  border: 2.5px solid #219a9e;
+}
+
+.howto-vertical-text {
+  background: none;
+  margin: 18px 0 0 0;
+  padding: 0 8px;
+  text-align: center;
+}
+
+.howto-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.howto-desc {
+  font-size: 1.04rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* الخط المتعرج بين الدوائر */
+.howto-zigzag-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.howto-vertical-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: #219a9e;
+  z-index: 1;
+  border-radius: 2px;
+  opacity: 0.18;
+}
+
+.howto-vertical-step.top .howto-img-wrapper-vertical {
+  margin-bottom: 18px;
+  margin-top: 0;
+}
+.howto-vertical-step.bottom .howto-img-wrapper-vertical {
+  margin-top: 18px;
+  margin-bottom: 0;
+}
+
+.howto-vertical-step.top .howto-vertical-text {
+  order: 2;
+}
+.howto-vertical-step.bottom .howto-vertical-text {
+  order: 1;
+}
+
+@media (max-width: 1100px) {
+  .howto-steps-vertical {
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding: 0 10px;
+  }
+  .howto-vertical-step.bottom {
+    margin-top: 0;
+  }
+  .howto-vertical-line, .howto-zigzag-line {
+    display: none;
+  }
+}
+
+.howto-zigzag-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0;
+  padding: 0 150px;
+  margin: 60px 0 80px 0;
+  min-height: 320px;
+}
+
+.howto-zigzag-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 180px;
+  max-width: 220px;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.howto-zigzag-step.top {
+  justify-content: flex-start;
+  margin-bottom: 40px;
+}
+.howto-zigzag-step.bottom {
+  justify-content: flex-end;
+  margin-top: 80px;
+}
+
+.howto-zigzag-outer-wrapper {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.howto-zigzag-title-main {
+  text-align: center;
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: #219a9e;
+  margin-bottom: 36px;
+  letter-spacing: 1px;
+}
+
+.howto-zigzag-circle {
+  width: 170px;
+  height: 170px;
+  background: #219a9e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(33,154,158,0.18), 0 2px 8px rgba(0,0,0,0.07);
+  margin-bottom: 18px;
+  margin-top: 8px;
+  position: relative;
+  transition: box-shadow 0.3s;
+  border: 6px solid #fff;
+}
+.howto-zigzag-circle:hover {
+  box-shadow: 0 12px 40px rgba(33,154,158,0.22), 0 2px 8px rgba(0,0,0,0.10);
+}
+
+.howto-zigzag-img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+
+.howto-zigzag-text {
+  background: none;
+  margin: 20px 0 0 0;
+  padding: 0 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.howto-zigzag-number {
+  color: #219a9e;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.howto-zigzag-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.howto-zigzag-desc {
+  font-size: 0.98rem;
+  color: #666;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.howto-zigzag-svg-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.howto-zigzag-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* رفع النص الخاص بالخطوتين 2 و 4 */
+.howto-zigzag-step.bottom .howto-zigzag-text {
+  transform: translateY(-50px);
+}
+
+@media (max-width: 1100px) {
+    .howto-zigzag-outer-wrapper {
+        display: none !important;
+      }
+}
+
+/* خط التحميل بين القسمين */
+.howto-progress-bar-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.howto-progress-bar {
+  position: absolute;
+  left: 0;
+  height: 8px;
+  background: linear-gradient(90deg, #219a9e 40%, #48c6c6 100%);
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(33,154,158,0.10);
+  animation: howto-progress-bar-anim 4s cubic-bezier(0.4,0,0.2,1) infinite;
+}
+@keyframes howto-progress-bar-anim {
+  0% { width: 0%; left: 0; right: auto; }
+  10% { width: 10%; left: 0; right: auto; }
+  50% { width: 80%; left: 0; right: auto; }
+  60% { width: 100%; left: 0; right: auto; }
+  75% { width: 100%; left: 0; right: auto; }
+  80% { width: 80%; left: auto; right: 0; }
+  100% { width: 0%; left: auto; right: 0; }
+}
+
+/* Animation styles */
+.howto-zigzag-step.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.howto-zigzag-step.top.animate-in {
+  animation: slideInTop 0.8s ease-out forwards;
+}
+
+.howto-zigzag-step.bottom.animate-in {
+  animation: slideInBottom 0.8s ease-out forwards;
+}
+
+@keyframes slideInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add animation delay for each step */
+.howto-zigzag-step:nth-child(1) { transition-delay: 0.1s; }
+.howto-zigzag-step:nth-child(2) { transition-delay: 0.2s; }
+.howto-zigzag-step:nth-child(3) { transition-delay: 0.3s; }
+.howto-zigzag-step:nth-child(4) { transition-delay: 0.4s; }
+.howto-zigzag-step:nth-child(5) { transition-delay: 0.5s; }
+
