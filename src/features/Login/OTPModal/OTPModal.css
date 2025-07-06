@@ -195,3 +195,21 @@
     min-width: auto;
   }
 } 
+
+/* لإزالة الأسهم من input[type=number] */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* إزالة الأنماط الافتراضية عند التركيز */
+input[type="number"]:focus {
+  border: 3px solid!important;
+  border-color: #006A71 !important;  /* لون الحدود أزرق */
+  background-color: #ffffff !important;  /* الحقل يصبح أبيض */
+  outline: none !important;
+ 
+  -webkit-appearance: none;
+  appearance: none;
+}

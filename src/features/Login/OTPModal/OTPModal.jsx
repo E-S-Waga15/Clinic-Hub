@@ -57,37 +57,41 @@ const OTPModal = ({ isOpen, onClose, onVerifyCode }) => {
             <p className="otp-subtitle">
               Enter the 4-digit code we sent to<br />your phone number
             </p>
+            <div className="d-flex flex-row align-items-center justify-content-center gap-3 flex-wrap">
+  <ReactCodeInput
+  type="number"
+  fields={4}
+  value={otp}
+  onChange={setOtp}
+  onKeyDown={handleKeyDown}
+  inputStyle={{
+    width: '40px',
+    height: '40px',
+    margin: '0 4px',
+    fontSize: '18px',
+    borderRadius: '8px',
+    border: '1px solid #ccc',
+    textAlign: 'center',
+    backgroundColor: '#f8f9fa',
+  }}
+  inputMode="numeric"
+  focusStyle={{
+    borderColor: '#007bff',
+    boxShadow: '0 0 5px rgba(0, 123, 255, 0.5)',
+    outline: 'none',
+  }}
+/>
 
-            <div className="d-flex flex-column flex-lg-row align-items-center gap-2 w-100">
-              <div className="otp-container w-100 d-flex justify-content-center">
-                <ReactCodeInput
-                  type="number"
-                  fields={4}
-                  value={otp}
-                  onChange={setOtp}
-                  onKeyDown={handleKeyDown}
-                  inputStyle={{
-                    width: '50px',
-                    height: '50px',
-                    margin: '0 6px',
-                    fontSize: '20px',
-                    borderRadius: '10px',
-                    border: '1px solid #ccc',
-                    textAlign: 'center',
-                    backgroundColor: '#f8f9fa',
-                  }}
-                  inputMode="numeric"
-                />
-              </div>
 
-              <button
-                onClick={handleVerify}
-                className="otp-button"
-                disabled={otp.length !== 4 || loading}
-              >
-                {loading ? 'Verifying...' : 'Verify Code'}
-              </button>
-            </div>
+  <button
+    onClick={handleVerify}
+    className="otp-button"
+    disabled={otp.length !== 4 || loading}
+  >
+    {loading ? 'Verifying...' : 'Verify Code'}
+  </button>
+</div>
+
 
             {error && <p className="text-danger mt-2 text-center">{error}</p>}
 
