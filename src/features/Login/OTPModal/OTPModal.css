@@ -52,6 +52,7 @@
 
 /* OTP specific styles */
 .otp-input-hidden {
+  direction: ltr !important;
   position: absolute;
   width: 1px;
   height: 1px;
