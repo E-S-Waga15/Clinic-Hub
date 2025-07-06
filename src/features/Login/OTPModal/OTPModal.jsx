@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { verifyOtp } from '../../../store/slices/authSlice';
 import "./OTPModal.css";
 import AuthBanner from '../../../components/AuthBanner/AuthBanner';
-import OtpInput from 'react-otp-input';
+import ReactCodeInput from 'react-code-input';
 
 const OTPModal = ({ isOpen, onClose, onVerifyCode }) => {
   const [otp, setOtp] = useState('');
@@ -35,6 +35,12 @@ const OTPModal = ({ isOpen, onClose, onVerifyCode }) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleVerify();
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -54,26 +60,23 @@ const OTPModal = ({ isOpen, onClose, onVerifyCode }) => {
 
             <div className="d-flex flex-column flex-lg-row align-items-center gap-2 w-100">
               <div className="otp-container w-100 d-flex justify-content-center">
-                <OtpInput
+                <ReactCodeInput
+                  type="number"
+                  fields={4}
                   value={otp}
                   onChange={setOtp}
-                  numInputs={4}
-                  isInputNum
-                  shouldAutoFocus
+                  onKeyDown={handleKeyDown}
                   inputStyle={{
-                    width: '48px',
-                    height: '48px',
-                    margin: '0 5px',
+                    width: '50px',
+                    height: '50px',
+                    margin: '0 6px',
                     fontSize: '20px',
-                    borderRadius: '8px',
+                    borderRadius: '10px',
                     border: '1px solid #ccc',
                     textAlign: 'center',
-                    backgroundColor: '#f9f9f9'
+                    backgroundColor: '#f8f9fa',
                   }}
-                  focusStyle={{
-                    border: '2px solid #006A71',
-                    outline: 'none'
-                  }}
+                  inputMode="numeric"
                 />
               </div>
 
