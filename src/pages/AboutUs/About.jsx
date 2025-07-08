@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import './About.css';
-import WhoAreImage from '../../assets/WhoAre.svg'
+import React, { useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import "./About.css";
+import WhoAreImage from "../../assets/WhoAre.svg";
 
 const About = () => {
   useEffect(() => {
-    const cards = document.querySelectorAll('.vision-card');
+    const cards = document.querySelectorAll(".vision-card");
     cards.forEach((card, index) => {
       card.style.animationDelay = `${index * 0.2}s`;
-      card.classList.add('fade-in-up');
+      card.classList.add("fade-in-up");
     });
   }, []);
 
@@ -29,28 +29,41 @@ const About = () => {
                 services and supports doctors and medical staff in organizing
                 tasks and providing more effective healthcare.
               </p>
-            </div>
+              <div className="mt-3">
+             
+  <a
+      href="/files/Clinic-Hub-Project-Presentation.pdf"
+    download
+    className="btn btn-primary"
+  >
+    📄 Download Bochure
+  </a>
+</div>
+
+              
+              </div>
+           
           </Col>
-          <Col lg={6}  className="about-content">
-          <div className="about-imag fade-in-right">
-          <img src={WhoAreImage} alt="Clinic Hub" />
-        </div>
+          <Col lg={6} className="about-content">
+            <div className="about-imag fade-in-right">
+              <img src={WhoAreImage} alt="Clinic Hub" />
+            </div>
           </Col>
         </Row>
         <Row className="vision-cards">
-           <Col md={4}>
+          <Col md={4}>
             <div className="vision-card">
               <div className="card-icon">
                 <i className="fas fa-heart"></i>
               </div>
               <h3>Why Us?</h3>
               <p>
-                With cultural and civilizational progress, the demand for
-                home healthcare services has increased. We realize that
-                quality care, psychological comfort, and physical relief are
-                fundamental for the patient. From this standpoint, we are
-                committed to providing home healthcare services. We hope to
-                be your support in maintaining your health and comfort.
+                With cultural and civilizational progress, the demand for home
+                healthcare services has increased. We realize that quality care,
+                psychological comfort, and physical relief are fundamental for
+                the patient. From this standpoint, we are committed to providing
+                home healthcare services. We hope to be your support in
+                maintaining your health and comfort.
               </p>
             </div>
           </Col>
@@ -61,18 +74,17 @@ const About = () => {
               </div>
               <h3>Mission & Goals</h3>
               <p>
-                Clinic Hub seeks to provide outstanding service based on
-                smart technologies and qualified expertise, committed to
-                humanitarian values and comprehensive scientific and medical
-                foundations across various specialties. We adhere to the
-                highest quality standards that serve the patient's mental and
-                physical health while at home, and aim to raise health
-                awareness in society.
+                Clinic Hub seeks to provide outstanding service based on smart
+                technologies and qualified expertise, committed to humanitarian
+                values and comprehensive scientific and medical foundations
+                across various specialties. We adhere to the highest quality
+                standards that serve the patient's mental and physical health
+                while at home, and aim to raise health awareness in society.
               </p>
             </div>
           </Col>
-        
-           <Col md={4}>
+
+          <Col md={4}>
             <div className="vision-card">
               <div className="card-icon">
                 <i className="fas fa-lightbulb"></i>
@@ -80,11 +92,10 @@ const About = () => {
               <h3>Vision & Values</h3>
               <p>
                 We strive to elevate the concept of home healthcare, and for
-                Clinic Hub to become a pioneer in home healthcare across
-                Saudi Arabia in a unique and distinct period. We aspire to be
-                pioneers in providing smart, innovative, and distinguished
-                high-quality services that meet patients' needs in their
-                homes.
+                Clinic Hub to become a pioneer in home healthcare across Saudi
+                Arabia in a unique and distinct period. We aspire to be pioneers
+                in providing smart, innovative, and distinguished high-quality
+                services that meet patients' needs in their homes.
               </p>
             </div>
           </Col>

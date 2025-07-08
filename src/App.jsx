@@ -10,6 +10,7 @@ import Doctors from './features/Doctors/Doctors';
 import Contact from './pages/ContactUs/Contact';
 import Login from './features/Login/Login';
 import Footer from './components/Footer/Footer';
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/doctor" element={<Navigate to="/" state={{ scrollTo: 'doctors-section' }} replace />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         </Routes>
         <Footer/>
       </div>

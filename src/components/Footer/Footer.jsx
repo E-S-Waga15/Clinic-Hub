@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import LogoFooter from "../../assets/Footer.svg";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
@@ -21,6 +22,14 @@ const Footer = () => {
               Clinic Hub It is a smart digital platform that aims to develop the
               healthcare experience through technology.
             </p>
+            <div className="footer-col">
+              <ul>
+                <li>
+                    <Link to="/privacypolicy">Privacy Policy _ سياسة الخصوصية</Link> 
+                </li>
+              </ul>
+          
+            </div>
             <div className="footer-social">
               <a href="https://www.facebook.com/Eswaga15/">
                 <i className="fab fa-facebook-f"></i>
@@ -36,30 +45,32 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          {/* Pages */}
-          <div className="footer-col">
-            <h3>Pages</h3>
-            <ul>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#">Book</a>
-              </li>
-              <li>
-                <a href="#">Specialty</a>
-              </li>
-              <li>
-                <a href="#">Doctors</a>
-              </li>
-              <li>
-                <a href="#">About us</a>
-              </li>
-              <li>
-                <a href="#">Contact Us</a>
-              </li>
-            </ul>
-          </div>
+         {/* Pages */}
+<div className="footer-col">
+  <h3>Pages</h3>
+  <ul>
+    <li>
+      <Link to="/">Home</Link>
+    </li>
+    <li>
+      <Link to="#">Book</Link>
+    </li>
+    <li>
+      <Link to="#">Specialty</Link>
+    </li>
+    <li>
+      <Link to="#">Doctors</Link>
+    </li>
+    <li>
+      <Link to="#">About us</Link>
+    </li>
+    <li>
+      <Link to="#">Contact Us</Link>
+    </li>
+   
+  </ul>
+</div>
+
           {/* Service */}
           <div className="footer-col">
             <h3>Service</h3>
