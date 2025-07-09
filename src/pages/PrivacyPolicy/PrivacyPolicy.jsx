@@ -1,23 +1,79 @@
 import React, { useState } from 'react';
+import { FaGlobe } from 'react-icons/fa'; // أيقونة اللغة من react-icons
 
 const PrivacyPolicy = () => {
-  const [language, setLanguage] = useState('ar');
+  const [language, setLanguage] = useState('en');
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'ar' ? 'en' : 'ar'));
+  const toggleLanguage = (lang) => {
+    if ((lang === 'ar' && language !== 'ar') || (lang === 'en' && language === 'ar')) {
+      setLanguage(lang);
+    }
+    setShowDropdown(false);
   };
 
   return (
     <div className="container my-5">
-      <div style={{ height: "100px" }}></div>
+      <div style={{ height: '100px' }}></div>
 
-      <div className="d-flex justify-content-end mb-3">
+      {/* أيقونة اللغة + القائمة */}
+      <div className="d-flex justify-content-end mb-3 position-relative">
         <button
-          onClick={toggleLanguage}
-          className="btn btn-primary"
+          onClick={() => setShowDropdown(!showDropdown)}
+          className="btn btn-light"
+          style={{ fontSize: '1.5rem' }}
         >
-          {language === 'ar' ? 'English' : 'العربية'}
+          <FaGlobe />
         </button>
+
+        {showDropdown && (
+          <div
+            className="language-dropdown"
+            style={{
+              position: 'absolute',
+              top: '100%',
+              right: 0,
+              background: 'white',
+              border: '1px solid #ccc',
+              borderRadius: '6px',
+              minWidth: '120px',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)',
+              zIndex: 10,
+              overflow: 'hidden',
+            }}
+          >
+            <button
+              onClick={() => toggleLanguage('en')}
+              style={{
+                width: '100%',
+                padding: '10px',
+                border: 'none',
+                background: 'none',
+                textAlign: 'left',
+                transition: 'background 0.3s',
+              }}
+              onMouseEnter={(e) => (e.target.style.background = '#f0f0f0')}
+              onMouseLeave={(e) => (e.target.style.background = 'none')}
+            >
+              English
+            </button>
+            <button
+              onClick={() => toggleLanguage('ar')}
+              style={{
+                width: '100%',
+                padding: '10px',
+                border: 'none',
+                background: 'none',
+                textAlign: 'left',
+                transition: 'background 0.3s',
+              }}
+              onMouseEnter={(e) => (e.target.style.background = '#f0f0f0')}
+              onMouseLeave={(e) => (e.target.style.background = 'none')}
+            >
+              العربية
+            </button>
+          </div>
+        )}
       </div>
 
       {language === 'ar' ? (

@@ -354,25 +354,7 @@
   }
 }
 
-
-
-.bio-text.clamped {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-size: 14px;
-  color: #444;
-  line-height: 1.5;
-  margin-bottom: 4px;
-}
-
-.bio-text.expanded {
-  display: inline;
-}
-
 .show-more {
-  
   color: #006A71;
   font-weight: 600;
   cursor: pointer;

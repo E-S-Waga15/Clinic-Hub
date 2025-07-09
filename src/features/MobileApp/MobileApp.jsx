@@ -1,24 +1,24 @@
-import React, { useEffect, useRef } from 'react';
-import { Carousel, Button, Container, Row, Col } from 'react-bootstrap';
-import './MobileApp.css';
+import React, { useEffect, useRef } from "react";
+import { Carousel, Button, Container, Row, Col } from "react-bootstrap";
+import "./MobileApp.css";
 
-import FirstImage from '../../assets/MobileApp/first.svg';
-import SecondImage from '../../assets/MobileApp/second.svg';
-import ThirdImage from '../../assets/MobileApp/third.svg';
+import FirstImage from "../../assets/MobileApp/first.svg";
+import SecondImage from "../../assets/MobileApp/second.svg";
+import ThirdImage from "../../assets/MobileApp/third.svg";
 
 const slides = [
   {
     image: FirstImage,
-    text: "I've tried many health apps before, but none made managing my medications this simple. With this app, I can easily track all my prescriptions and receive timely reminders—no more missed doses. It feels reassuring to know my health is organized and under control, right from my phone."
+    text: "I've tried many health apps before, but none made managing my medications this simple. With this app, I can easily track all my prescriptions and receive timely reminders—no more missed doses. It feels reassuring to know my health is organized and under control, right from my phone.",
   },
   {
     image: SecondImage,
-    text: "I've tried several healthcare apps before, but none offered this level of organization. With this app, I can easily schedule and manage my appointments, and access my full medical history anytime. It's truly comforting to have my entire healthcare journey right at my fingertips."
+    text: "I've tried several healthcare apps before, but none offered this level of organization. With this app, I can easily schedule and manage my appointments, and access my full medical history anytime. It's truly comforting to have my entire healthcare journey right at my fingertips.",
   },
   {
     image: ThirdImage,
-    text: "What I love most about this app is the detailed medical record it keeps for me. I can view my full health history, treatments, and medications anytime — even if I visit a different clinic. It's like carrying my medical file in my pocket."
-  }
+    text: "What I love most about this app is the detailed medical record it keeps for me. I can view my full health history, treatments, and medications anytime — even if I visit a different clinic. It's like carrying my medical file in my pocket.",
+  },
 ];
 
 const MobileApp = () => {
@@ -29,12 +29,12 @@ const MobileApp = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('section-visible');
+            entry.target.classList.add("section-visible");
           }
         });
       },
       {
-        threshold: 0.2
+        threshold: 0.2,
       }
     );
 
@@ -51,9 +51,9 @@ const MobileApp = () => {
 
   return (
     <div className="mobile-carousel-wrapper section-hidden" ref={sectionRef}>
-      <Carousel 
-        interval={5000} 
-        indicators={true} 
+      <Carousel
+        interval={5000}
+        indicators={true}
         controls={true}
         touch={true}
         className="swipeable-carousel"
@@ -73,9 +73,16 @@ const MobileApp = () => {
                   <div className="quote-mark">"</div>
                   <p className="testimonial">{slide.text}</p>
                   {idx === 2 && (
-                    <Button variant="light" className="download-btn">
-                      Download it now
-                    </Button>
+                   <div className="mt-3">
+                   <a
+                     href="/files/app-release.apk"
+                     download
+                     className="download-btn"
+                   >
+                     Download it now
+                   </a>
+                 </div>
+                 
                   )}
                 </Col>
               </Row>

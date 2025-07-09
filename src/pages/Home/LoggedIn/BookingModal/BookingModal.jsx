@@ -17,6 +17,11 @@ import {
   fetchAvailableSlots,
   clearAvailableSlots,
 } from "../../../../store/slices/availableSlotsSlice";
+import {
+  bookAppointment,
+  clearAppointmentState,
+} from "../../../../store/slices/appointmentSlice";
+import SpinnersLoading from "../../../../components/SpinnersLoading";
 
 const BookingModal = ({ isOpen, onClose, idDoctor }) => {
   const dispatch = useDispatch();
@@ -29,11 +34,26 @@ const BookingModal = ({ isOpen, onClose, idDoctor }) => {
   const { slots: availableSlots, loading: slotsLoading } = useSelector(
     (state) => state.availableSlots || {}
   );
+  const {
+    loading: bookingLoading,
+    successMessage,
+    error: bookingError,
+  } = useSelector((state) => state.appointment || {});
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsSmallScreen(window.innerWidth < 768);
+    const handleResize = () => {
+      const small = window.innerWidth < 768;
+      setIsSmallScreen(small);
+      if (!small) {
+        setIsExpanded(true);
+      } else {
+        setIsExpanded(false);
+      }
+    };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -47,20 +67,16 @@ const BookingModal = ({ isOpen, onClose, idDoctor }) => {
     const year = dateToView.getFullYear();
     const month = (dateToView.getMonth() + 1).toString().padStart(2, "0");
     const day = dateToView.getDate().toString().padStart(2, "0");
-
-    const todayFormatted = `${year}-${month}-${day}`; // اليوم الحالي
-
-    const formattedDate = `${year}-${month}-01`; // بداية الشهر
+    const todayFormatted = `${year}-${month}-${day}`;
     dispatch(fetchAvailableDays({ doctorId: idDoctor, date: todayFormatted }));
   };
 
   const loadAvailableSlots = (date) => {
     if (!date) return;
-    const dateStr = date.toLocaleDateString("sv-SE"); // YYYY-MM-DD
+    const dateStr = date.toLocaleDateString("sv-SE");
     dispatch(fetchAvailableSlots({ doctorId: idDoctor, date: dateStr }));
   };
 
-  // التحميل الأولي للمعلومات
   useEffect(() => {
     if (isOpen && idDoctor) {
       dispatch(fetchDoctorById(idDoctor));
@@ -70,10 +86,10 @@ const BookingModal = ({ isOpen, onClose, idDoctor }) => {
       dispatch(clearDoctorInfo());
       dispatch(clearAvailableDays());
       dispatch(clearAvailableSlots());
+      dispatch(clearAppointmentState());
     };
   }, [isOpen, idDoctor]);
 
-  // عند توفر الأيام المتاحة اختر أول يوم متاح
   useEffect(() => {
     if (availableDates.length > 0 && !selectedDate) {
       const firstDate = new Date(availableDates[0]);
@@ -81,6 +97,29 @@ const BookingModal = ({ isOpen, onClose, idDoctor }) => {
       loadAvailableSlots(firstDate);
     }
   }, [availableDates]);
+
+  useEffect(() => {
+    if (successMessage) {
+      alert(successMessage);
+      onClose();
+      dispatch(clearAppointmentState());
+    }
+    if (bookingError) {
+      alert("Error: " + bookingError);
+      dispatch(clearAppointmentState());
+    }
+  }, [successMessage, bookingError]);
+
+  const getDisplayedBio = () => {
+    if (!infodoctor?.bio) return "";
+
+    if (isSmallScreen && !isExpanded) {
+      const words = infodoctor.bio.split(" ");
+      return words.slice(0, 12).join(" ") + " ...";
+    }
+
+    return infodoctor.bio;
+  };
 
   if (!isOpen) return null;
 
@@ -99,7 +138,9 @@ const BookingModal = ({ isOpen, onClose, idDoctor }) => {
 
         <div className="booking-container booking-scroll-body">
           {loading ? (
-            <p>Loading doctor info...</p>
+            <>
+              <SpinnersLoading />
+            </>
           ) : error ? (
             <p>Error: {error}</p>
           ) : infodoctor ? (
@@ -116,21 +157,18 @@ const BookingModal = ({ isOpen, onClose, idDoctor }) => {
                 <p className="booking-title">{infodoctor.specialization}</p>
                 <div className="booking-bio">
                   <h3>Biography</h3>
-                  <p
-                    className={`bio-text ${
-                      isExpanded ? "expanded" : "clamped"
-                    }`}
-                  >
-                    {infodoctor.bio}
+                  <p className="bio-text">
+                    {getDisplayedBio()}
+
+                    {isSmallScreen && (
+                      <span
+                        className="show-more"
+                        onClick={() => setIsExpanded(!isExpanded)}
+                      >
+                        {isExpanded ? "Show less" : "Show more"}
+                      </span>
+                    )}
                   </p>
-                  {isSmallScreen && (
-                    <span
-                      className="show-more"
-                      onClick={() => setIsExpanded(!isExpanded)}
-                    >
-                      {isExpanded ? "Show less" : "Show more"}
-                    </span>
-                  )}
                 </div>
               </div>
 
@@ -178,7 +216,9 @@ const BookingModal = ({ isOpen, onClose, idDoctor }) => {
 
                 <div className="booking-times">
                   {slotsLoading ? (
-                    <p>Loading times...</p>
+                    <>
+                      <SpinnersLoading width={100} />
+                    </>
                   ) : availableSlots.length > 0 ? (
                     availableSlots.map((slot, index) => (
                       <button
@@ -187,10 +227,11 @@ const BookingModal = ({ isOpen, onClose, idDoctor }) => {
                           selectedTime === `${slot.start} - ${slot.end}`
                             ? "booking-selected"
                             : ""
-                        }`}
+                        } ${slot.available !== true ? "btn btn-danger" : ""}`}
                         onClick={() =>
                           setSelectedTime(`${slot.start} - ${slot.end}`)
                         }
+                        disabled={slot.available !== true}
                       >
                         {slot.start}
                       </button>
@@ -202,9 +243,20 @@ const BookingModal = ({ isOpen, onClose, idDoctor }) => {
 
                 <button
                   className="booking-button"
-                  disabled={!selectedDate || !selectedTime}
+                  disabled={!selectedDate || !selectedTime || bookingLoading}
+                  onClick={() => {
+                    const [start_time] = selectedTime.split(" - ");
+                    const dateStr = selectedDate.toLocaleDateString("sv-SE");
+                    dispatch(
+                      bookAppointment({
+                        doctor_id: idDoctor,
+                        date: dateStr,
+                        start_time,
+                      })
+                    );
+                  }}
                 >
-                  Book
+                  {bookingLoading ? "Booking..." : "Book"}
                 </button>
               </div>
             </>

@@ -8,6 +8,7 @@ import doctorsReducer from './slices/doctorsSlice';
 import infodoctorReducer  from './slices/infodoctorSlice';
 import availableDaysReducer   from './slices/availableDaysSlice';
 import availableSlotsReducer   from './slices/availableSlotsSlice';
+import appointmentReducer from './slices/appointmentSlice';
 
 const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
     infodoctor: infodoctorReducer, 
     availableDays: availableDaysReducer,
     availableSlots: availableSlotsReducer,
+    appointment: appointmentReducer,
   },
 });
 

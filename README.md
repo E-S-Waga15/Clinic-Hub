@@ -1,4 +1,4 @@
-🏥 Clinic Center - A web application for a clinic center that provides a smart healthcare appointment booking system
+🏥 Clinic Hub - A web application for a clinic center that provides a smart healthcare appointment booking system
 Clinic Hub is a modern and responsive web application designed to simplify and streamline the healthcare experience for both patients and doctors. The platform enables users to:
 
 🌐 Browse specializations and doctors

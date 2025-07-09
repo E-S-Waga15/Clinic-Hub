@@ -152,6 +152,12 @@
 
 /* Mobile specific styles */
 @media (max-width: 576px) {
+
+  .navbar-collapse {
+    width: 50%;
+  }
+
+
   .navbar-toggler {
     width: 40px !important;
     height: 40px !important;
@@ -168,6 +174,14 @@
     min-width: 90px;
     font-size: 14px;
     padding: 8px 16px;
+  }
+}
+
+@media (max-width: 390px) {
+  .login-button {
+    width: 50px;
+    font-size: 14px;
+    padding: 1px 1px;
   }
 }
 
