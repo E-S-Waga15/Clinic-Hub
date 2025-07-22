@@ -18,7 +18,7 @@ const HeroSection = () => {
               Quick, easy, and convenient healthcare access at your fingertips.
             </p>
             <div className="hero-buttons">
-              <Link to="/specialty" className="btn btn-primary hero-btn">
+              <Link to="/appointments" className="btn btn-primary hero-btn">
                 Get Started
               </Link>
               <Link to="/about" className="btn btn-outline hero-btn">

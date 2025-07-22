@@ -111,15 +111,7 @@ const Doctors = () => {
       <div className="container">
         <h2 className="section-title">Our Doctors</h2>
         <div className="doctors-slider-container">
-          {isLargeScreen && (
-            <button 
-              className="slider-button prev"
-              onClick={handlePrevClick}
-              aria-label="Previous doctors"
-            >
-              <FaChevronLeft />
-            </button>
-          )}
+         
           
           <div className={`doctors-grid ${slideDirection}`}>
             {displayedDoctors.map((doctor, index) => (
@@ -133,15 +125,7 @@ const Doctors = () => {
             ))}
           </div>
 
-          {isLargeScreen && (
-            <button 
-              className="slider-button next"
-              onClick={handleNextClick}
-              aria-label="Next doctors"
-            >
-              <FaChevronRight />
-            </button>
-          )}
+         
         </div>
       </div>
     </div>

@@ -103,11 +103,11 @@ const Navbar = ({ onLoginClick }) => {
             </li>
             <li className="nav-item">
               <Link 
-                className={`nav-link ${location.pathname === '/specialty' ? 'active' : ''}`} 
-                to="/specialty"
+                className={`nav-link ${location.pathname === '/appointments' ? 'active' : ''}`} 
+                to="/appointments"
                 onClick={handleNavItemClick}
               >
-                Specialty
+                Appointments
               </Link>
             </li>
             <li className="nav-item">
